@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Blood Pressure Diary</string>
+    <string name="text_dl">Mg/dl</string>
+    <string name="text_l">Mmol/l</string>
+    <string name="kindly_input_your_heart_rate_information">kindly input your heart rate information</string>
+</resources>

@@ -1,0 +1,42 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+</data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mainColor">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/atv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="21dp"
+            android:drawablePadding="12dp"
+            android:text="Settings"
+            android:textColor="#FF2C2830"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_card_new"
+            android:drawableStart="@drawable/icon_yinsizhengce"
+            android:drawableEnd="@drawable/icon_vector"
+            android:drawablePadding="9dp"
+            android:padding="18dp"
+            android:text="Privacy Policy"
+            android:textColor="#FF2C2830"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/atv_back" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

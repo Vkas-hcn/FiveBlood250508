@@ -1,0 +1,470 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="colorState"
+            type="String"
+            android:value="NORMAL" />
+
+        <variable
+            name="colorInt"
+            type="Integer"
+            android:value="1" />
+
+        <variable
+            name="sugarUnit"
+            type="String" />
+
+        <variable
+            name="sugarCurrentState"
+            type="String"
+            android:value="NORMAL" />
+
+        <variable
+            name="sugarCurrentInt"
+            type="Integer"
+            android:value="1" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mainColor">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/icon_back"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_record"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_record" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:text="New Record"
+            android:textColor="#FF2C2830"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_card_new"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_record">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_item_new"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="11dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_sugar_unit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_bianji" />
+
+                <EditText
+                    android:id="@+id/ed_sugar_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sugar_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:background="@drawable/bg_item_new"
+                android:drawableEnd="@drawable/icon_zhihuan"
+                android:drawablePadding="8dp"
+                android:layout_marginStart="8dp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="9dp"
+                android:text="@string/text_l"
+                android:textColor="#FF222222"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+            <FrameLayout
+                android:id="@+id/fl_before"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_before_new"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sugar_unit">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/bg_ver"
+                    android:gravity="center"
+                    android:drawablePadding="4dp"
+                    android:layout_gravity="center"
+                    android:paddingVertical="12dp"
+                    android:text="Before Meals"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sugar_unit" />
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card_new"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <ImageView
+                android:id="@+id/img_cc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circle_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_detail_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Normal"
+                android:textColor="#FF2C2830"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_cc"
+                app:layout_constraintStart_toEndOf="@+id/img_cc"
+                app:layout_constraintTop_toTopOf="@+id/img_cc" />
+
+
+            <TextView
+                android:id="@+id/tv_detail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="2023-12-09  14:23"
+                android:textColor="#FFD9D9D9"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_detail_state"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_state" />
+
+            <View
+                android:id="@+id/view_hypotension"
+                android:layout_width="41dp"
+                android:layout_height="8dp"
+                android:layout_marginTop="12dp"
+                android:background="#0498E9"
+                app:layout_constraintEnd_toStartOf="@+id/view_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_date" />
+
+            <View
+                android:id="@+id/img_hypotension"
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:background="#2C2830"
+                android:visibility="@{colorInt ==1?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/view_hypotension"
+                app:layout_constraintEnd_toEndOf="@+id/view_hypotension"
+                app:layout_constraintStart_toStartOf="@+id/view_hypotension"
+                app:layout_constraintTop_toTopOf="@+id/view_hypotension" />
+
+            <View
+                android:id="@+id/view_normal"
+                android:layout_width="41dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:background="#6AC74F"
+                app:layout_constraintEnd_toStartOf="@+id/view_elevated"
+                app:layout_constraintStart_toEndOf="@+id/view_hypotension"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_date" />
+
+            <View
+                android:id="@+id/img_normal"
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:background="#2C2830"
+                android:visibility="@{colorInt ==2?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/view_normal"
+                app:layout_constraintEnd_toEndOf="@+id/view_normal"
+                app:layout_constraintStart_toStartOf="@+id/view_normal"
+                app:layout_constraintTop_toTopOf="@+id/view_normal" />
+
+            <View
+                android:id="@+id/view_elevated"
+                android:layout_width="41dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:background="#F5D04B"
+                app:layout_constraintEnd_toStartOf="@+id/view_stage1"
+                app:layout_constraintStart_toEndOf="@+id/view_normal"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_date" />
+
+            <View
+                android:id="@+id/img_elevated"
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:background="#2C2830"
+                android:visibility="@{colorInt ==3?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/view_elevated"
+                app:layout_constraintEnd_toEndOf="@+id/view_elevated"
+                app:layout_constraintStart_toStartOf="@+id/view_elevated"
+                app:layout_constraintTop_toTopOf="@+id/view_elevated" />
+
+            <View
+                android:id="@+id/view_stage1"
+                android:layout_width="41dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:background="#F2B467"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/view_elevated"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_date" />
+
+            <View
+                android:id="@+id/img_stage1"
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:background="#2C2830"
+                android:visibility="@{colorInt ==4?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/view_stage1"
+                app:layout_constraintEnd_toEndOf="@+id/view_stage1"
+                app:layout_constraintStart_toStartOf="@+id/view_stage1"
+                app:layout_constraintTop_toTopOf="@+id/view_stage1" />
+
+
+
+            <TextView
+                android:id="@+id/tv_great"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="start"
+                android:text="Great!Your blood pressure is in the healthy range. just keep it!"
+                android:textColor="#FF9DA1B1"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_hypotension" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="70dp"
+            android:layout_marginBottom="38dp"
+            android:background="@drawable/bg_save_new"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="Save"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/con_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="#91000000">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_but_dialog_new"
+                android:paddingVertical="18dp"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_x"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@{sugarCurrentInt == 1?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="7dp"
+                    android:text="Normal"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_cancel" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_before_meals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@{sugarCurrentInt == 2?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="Before meals"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sugar_state_normal"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sugar_state_normal" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_before_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@{sugarCurrentInt == 3?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="Before exercise"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_sugar_state_before_meals"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sugar_state_before_meals"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sugar_state_before_meals" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_after_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@{sugarCurrentInt == 4?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="After exercise"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sugar_state_normal" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_1hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@{sugarCurrentInt == 5?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="1 hour after meals"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_sugar_state_after_exercise"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sugar_state_after_exercise"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sugar_state_after_exercise" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_sleep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@{sugarCurrentInt == 6?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="Sleep"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sugar_state_after_exercise" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_2hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@{sugarCurrentInt == 7?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="2 hours after meals"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_sugar_state_sleep"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sugar_state_sleep"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sugar_state_sleep" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sugar_state_before_fasting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@{sugarCurrentInt == 8?@drawable/sugar_check_new:@drawable/sugar_no_check_new}"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="Fasting"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_sugar_state_2hours"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sugar_state_2hours"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sugar_state_2hours" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
