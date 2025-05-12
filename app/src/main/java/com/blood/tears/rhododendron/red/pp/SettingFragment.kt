@@ -17,7 +17,7 @@ class SettingFragment :   BaseFragment<ActivitysSettingBinding, BaseViewModel>()
             val intent = Intent(Intent.ACTION_VIEW)
             //TODO 跳转网页
             intent.data =
-                android.net.Uri.parse("https://www.google.com")
+                android.net.Uri.parse("https://sites.google.com/view/blood-pressure-diary-mm/home")
             startActivity(intent)
         }
     }
