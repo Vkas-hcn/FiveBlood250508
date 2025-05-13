@@ -26,6 +26,10 @@ class PressureFragment : BaseFragment<FragmentPressureBinding, PressureViewModel
             val intent = Intent(activity, PressureDetail::class.java)
             startActivity(intent)
         }
+        binding.tvAdd.setOnClickListener {
+            val intent = Intent(activity, PressureDetail::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun observeViewModel() {
