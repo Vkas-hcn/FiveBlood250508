@@ -4,17 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.blood.tears.rhododendron.red.bean.AllUtils
-import com.blood.tears.rhododendron.red.bean.AppUtils.checkBloodPressure
-import com.blood.tears.rhododendron.red.bean.AppUtils.getBloodPressureState
-import com.blood.tears.rhododendron.red.bean.AppUtils.getBloodPressureStateColor
-import com.blood.tears.rhododendron.red.bean.AppUtils.getBloodPressureStateImage
-import com.blood.tears.rhododendron.red.bean.AppUtils.getDateTime
-import com.blood.tears.rhododendron.red.databinding.ActivityPDBinding
 import com.blood.tears.rhododendron.red.bean.PDataBean
+import com.blood.tears.rhododendron.red.databinding.ActivityPpprrBinding
 
 class PressureDetail : AppCompatActivity() {
-    private val binding by lazy { ActivityPDBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityPpprrBinding.inflate(layoutInflater) }
     private var isEdit = false
     private var pressureId = ""
     private var pressureBean: PDataBean? = null

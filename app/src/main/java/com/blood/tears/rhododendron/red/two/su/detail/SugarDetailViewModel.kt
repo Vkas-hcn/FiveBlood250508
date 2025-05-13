@@ -9,7 +9,7 @@ import com.blood.tears.rhododendron.red.app.App
 import com.blood.tears.rhododendron.red.two.BaseViewModel
 
 class SugarDetailViewModel: BaseViewModel() {
-    private var currentUnit = AllUtils.BloodSugarUnit.L.toString()
+    private var currentUnit = AllUtils.L
 
     fun loadExistingData(sugarId: String): SDataBean? {
         return AllUtils.getSugarListData().find { it.id == sugarId }
@@ -19,7 +19,7 @@ class SugarDetailViewModel: BaseViewModel() {
         numL: Double,
         numDL: Double,
         date: String,
-        currentState: AllUtils.CurrentState,
+        currentState: String,
         id: String
     ): SDataBean {
         return SDataBean(
@@ -32,15 +32,15 @@ class SugarDetailViewModel: BaseViewModel() {
         )
     }
 
-    fun updateBloodSugarStatus(currentState: AllUtils.CurrentState, num: Double): String {
-        return AppUtils.determineBloodSugarStatus(currentState, getSugarNumToL(num)).toString()
+    fun updateBloodSugarStatus(currentState: String, num: Double): String {
+        return AppUtils.determineBloodSugarStatus(currentState, getSugarNumToL(num))
     }
 
     fun toggleSugarUnit(): String {
-        currentUnit = if (currentUnit == AllUtils.BloodSugarUnit.DL.toString()) {
-            AllUtils.BloodSugarUnit.L.toString()
+        currentUnit = if (currentUnit == AllUtils.DL) {
+            AllUtils.L
         } else {
-            AllUtils.BloodSugarUnit.DL.toString()
+            AllUtils.DL
         }
         DataUtilsHelp.sugarUnit = currentUnit
         return getCurrentSugarUnitText()
@@ -51,7 +51,7 @@ class SugarDetailViewModel: BaseViewModel() {
     }
 
     fun convertSugarNum(num: Double): Double {
-        return if (currentUnit == AllUtils.BloodSugarUnit.DL.toString()) {
+        return if (currentUnit == AllUtils.DL) {
             AllUtils.convertLToDl(num)
         } else {
             AllUtils.convertDlToL(num)
@@ -59,7 +59,7 @@ class SugarDetailViewModel: BaseViewModel() {
     }
 
     fun getSugarNumToL(num: Double): Double {
-        return if (currentUnit == AllUtils.BloodSugarUnit.DL.toString()) {
+        return if (currentUnit == AllUtils.DL) {
             AllUtils.convertDlToL(num)
         } else {
             num
@@ -67,7 +67,7 @@ class SugarDetailViewModel: BaseViewModel() {
     }
 
     fun getSugarNumToDl(num: Double): Double {
-        return if (currentUnit == AllUtils.BloodSugarUnit.L.toString()) {
+        return if (currentUnit == AllUtils.L) {
             AllUtils.convertLToDl(num)
         } else {
             num
@@ -79,7 +79,7 @@ class SugarDetailViewModel: BaseViewModel() {
     }
 
     fun getCurrentSugarUnitText(): String {
-        return if (currentUnit == AllUtils.BloodSugarUnit.DL.toString()) {
+        return if (currentUnit == AllUtils.DL) {
             "mg/dl"
         } else {
             "mmol/l"
@@ -87,7 +87,7 @@ class SugarDetailViewModel: BaseViewModel() {
     }
 
     fun getSugarNumText(bean: SDataBean): Double {
-        return if (currentUnit == AllUtils.BloodSugarUnit.DL.toString()) {
+        return if (currentUnit == AllUtils.DL) {
             bean.numDL
         } else {
             bean.numL

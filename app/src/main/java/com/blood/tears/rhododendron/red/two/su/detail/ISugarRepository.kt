@@ -1,6 +1,8 @@
 package com.blood.tears.rhododendron.red.two.su.detail
 
 import com.blood.tears.rhododendron.red.bean.AllUtils
+import com.blood.tears.rhododendron.red.bean.AllUtils.saveSugar
+import com.blood.tears.rhododendron.red.bean.AllUtils.updateSugar
 import com.blood.tears.rhododendron.red.bean.DataUtilsHelp
 import com.blood.tears.rhododendron.red.bean.SDataBean
 
@@ -17,9 +19,9 @@ interface ISugarRepository {
 class SugarRepositoryImpl : ISugarRepository {
     override fun getSugarList() = AllUtils.getSugarListData()
 
-    override fun saveSugar(item: SDataBean) = AllUtils.saveSugar(item)
+    override fun saveSugar(item: SDataBean) = item.saveSugar()
 
-    override fun updateSugar(item: SDataBean) = AllUtils.updateSugar(item)
+    override fun updateSugar(item: SDataBean) = item.updateSugar()
 
     override fun getCurrentUnit() = DataUtilsHelp.sugarUnit
 

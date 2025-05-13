@@ -51,7 +51,7 @@ class SugarAdapter(private var dataList: List<SDataBean>) :
         holder.tvItemDate.text = itemData.date
         holder.tvSugarNum.text = getSugarNum(itemData).toString()
         holder.tvItemImageState.text = AppUtils.getSugarCurrentState(itemData.currentState)
-        holder.tvSugarUnit.text = if (DataUtilsHelp.sugarUnit == AllUtils.BloodSugarUnit.DL.toString()) {
+        holder.tvSugarUnit.text = if (DataUtilsHelp.sugarUnit == AllUtils.DL) {
             "mg/dl"
         } else {
             "mmol/l"
@@ -71,7 +71,7 @@ class SugarAdapter(private var dataList: List<SDataBean>) :
     }
 
     private fun getSugarNum(sugarBean:SDataBean): Double {
-        val numData = if (DataUtilsHelp.sugarUnit == AllUtils.BloodSugarUnit.DL.toString()) {
+        val numData = if (DataUtilsHelp.sugarUnit == AllUtils.DL) {
             sugarBean.numDL
         } else {
             sugarBean.numL

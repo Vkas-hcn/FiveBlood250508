@@ -6,8 +6,8 @@ import androidx.annotation.Keep
 data class SDataBean(
     val numL: Double,
     val numDL: Double,
-    val state: AllUtils.BloodSugarStatus,
-    val currentState: AllUtils.CurrentState,
+    val state: String,
+    val currentState: String,
     val date: String,
     val id:String,
 )

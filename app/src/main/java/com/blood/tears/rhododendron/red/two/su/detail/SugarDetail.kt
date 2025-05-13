@@ -1,23 +1,25 @@
 package com.blood.tears.rhododendron.red.two.su.detail
 
-import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.blood.tears.rhododendron.red.R
-import com.blood.tears.rhododendron.red.databinding.ActivitySDBinding
 import com.blood.tears.rhododendron.red.bean.AllUtils
+import com.blood.tears.rhododendron.red.bean.AllUtils.closeKeyboard
+import com.blood.tears.rhododendron.red.bean.AllUtils.saveSugar
+import com.blood.tears.rhododendron.red.bean.AllUtils.updateSugar
 import com.blood.tears.rhododendron.red.bean.AppUtils
 import com.blood.tears.rhododendron.red.bean.SDataBean
+import com.blood.tears.rhododendron.red.databinding.ActivitySsssdBinding
 import com.blood.tears.rhododendron.red.two.BaseActivity
 
-class SugarDetail : BaseActivity<ActivitySDBinding, SugarDetailViewModel>() {
+class SugarDetail : BaseActivity<ActivitySsssdBinding, SugarDetailViewModel>() {
 
     private var isEdit = false
     private var sugarId = ""
     private var sugarBean: SDataBean? = null
-    private var currentStateSugar = AllUtils.CurrentState.NORMAL
+    private var currentStateSugar = AllUtils.NORMAL
     override val layoutId: Int
-        get() = R.layout.activity_s_d
+        get() = R.layout.activity_ssssd
 
     override val viewModelClass: Class<SugarDetailViewModel>
         get() = SugarDetailViewModel::class.java
@@ -52,7 +54,7 @@ class SugarDetail : BaseActivity<ActivitySDBinding, SugarDetailViewModel>() {
         // 显示对话框按钮
         binding.flBefore.setOnClickListener {
             binding.conDialog.isVisible = true
-            AllUtils.closeKeyboard(this)
+            this.closeKeyboard()
         }
 
         // 取消对话框按钮
@@ -61,14 +63,14 @@ class SugarDetail : BaseActivity<ActivitySDBinding, SugarDetailViewModel>() {
         }
 
         // 当前状态按钮
-        binding.tvSugarStateNormal.setOnClickListener { clickCurrentState(AllUtils.CurrentState.NORMAL) }
-        binding.tvSugarStateBeforeMeals.setOnClickListener { clickCurrentState(AllUtils.CurrentState.BEFORE_MEAL) }
-        binding.tvSugarStateBeforeExercise.setOnClickListener { clickCurrentState(AllUtils.CurrentState.BEFORE_EXERCISE) }
-        binding.tvSugarStateAfterExercise.setOnClickListener { clickCurrentState(AllUtils.CurrentState.AFTER_EXERCISE) }
-        binding.tvSugarState1hour.setOnClickListener { clickCurrentState(AllUtils.CurrentState.ONE_HOUR_AFTER_MEAL) }
-        binding.tvSugarStateSleep.setOnClickListener { clickCurrentState(AllUtils.CurrentState.ASLEEP) }
-        binding.tvSugarState2hours.setOnClickListener { clickCurrentState(AllUtils.CurrentState.TWO_HOURS_AFTER_MEAL) }
-        binding.tvSugarStateBeforeFasting.setOnClickListener { clickCurrentState(AllUtils.CurrentState.FASTING) }
+        binding.tvSugarStateNormal.setOnClickListener { clickCurrentState(AllUtils.NORMAL) }
+        binding.tvSugarStateBeforeMeals.setOnClickListener { clickCurrentState(AllUtils.BEFORE_MEAL) }
+        binding.tvSugarStateBeforeExercise.setOnClickListener { clickCurrentState(AllUtils.BEFORE_EXERCISE) }
+        binding.tvSugarStateAfterExercise.setOnClickListener { clickCurrentState(AllUtils.AFTER_EXERCISE) }
+        binding.tvSugarState1hour.setOnClickListener { clickCurrentState(AllUtils.ONE_HOUR_AFTER_MEAL) }
+        binding.tvSugarStateSleep.setOnClickListener { clickCurrentState(AllUtils.ASLEEP) }
+        binding.tvSugarState2hours.setOnClickListener { clickCurrentState(AllUtils.TWO_HOURS_AFTER_MEAL) }
+        binding.tvSugarStateBeforeFasting.setOnClickListener { clickCurrentState(AllUtils.FASTING) }
 
         // 输入框监听
         setupInputListeners()
@@ -133,15 +135,15 @@ class SugarDetail : BaseActivity<ActivitySDBinding, SugarDetailViewModel>() {
         )
 
         if (isEdit) {
-            AllUtils.updateSugar(newBean)
+            newBean.updateSugar()
         } else {
-            AllUtils.saveSugar(newBean)
+            newBean.saveSugar()
         }
 
         finish()
     }
 
-    private fun clickCurrentState(currentState: AllUtils.CurrentState) {
+    private fun clickCurrentState(currentState: String) {
         currentStateSugar = currentState
         binding.sugarCurrentState = currentState.toString()
         val numText = binding.edSugarNum.text.toString().trim()
@@ -173,8 +175,8 @@ class SugarDetail : BaseActivity<ActivitySDBinding, SugarDetailViewModel>() {
     }
 
     private fun updateUIForNewEntry() {
-        binding.sugarUnit = AllUtils.BloodSugarUnit.L.toString()
-        binding.sugarCurrentState = AllUtils.CurrentState.NORMAL.toString()
+        binding.sugarUnit = AllUtils.L
+        binding.sugarCurrentState = AllUtils.NORMAL.toString()
         binding.tvDetailDate.text =
             "Datetime:${AppUtils.getDateTime(System.currentTimeMillis().toString())}"
         val state = viewModel.updateBloodSugarStatus(currentStateSugar, 0.0)

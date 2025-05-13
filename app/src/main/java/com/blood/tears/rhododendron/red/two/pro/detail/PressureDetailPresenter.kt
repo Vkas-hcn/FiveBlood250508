@@ -4,13 +4,15 @@ package com.blood.tears.rhododendron.red.two.pro.detail
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.blood.tears.rhododendron.red.bean.AllUtils
+import com.blood.tears.rhododendron.red.bean.AllUtils.savePressure
+import com.blood.tears.rhododendron.red.bean.AllUtils.updatePressure
 import com.blood.tears.rhododendron.red.bean.AppUtils.checkBloodPressure
 import com.blood.tears.rhododendron.red.bean.AppUtils.getBloodPressureState
 import com.blood.tears.rhododendron.red.bean.AppUtils.getBloodPressureStateColor
 import com.blood.tears.rhododendron.red.bean.AppUtils.getBloodPressureStateImage
 import com.blood.tears.rhododendron.red.bean.AppUtils.getDateTime
 import com.blood.tears.rhododendron.red.bean.PDataBean
-import com.blood.tears.rhododendron.red.databinding.ActivityPDBinding
+import com.blood.tears.rhododendron.red.databinding.ActivityPpprrBinding
 
 class PressureDetailPresenter {
 
@@ -37,7 +39,7 @@ class PressureDetailPresenter {
     fun updateBloodPressureState(sys: Int, dia: Int): Int? {
         return checkBloodPressure(sys, dia)
     }
-     fun savePressureData(activity: AppCompatActivity,binding: ActivityPDBinding, isEdit: Boolean, pressureBean: PDataBean?) {
+     fun savePressureData(activity: AppCompatActivity,binding: ActivityPpprrBinding, isEdit: Boolean, pressureBean: PDataBean?) {
 
         val sys = binding.vpvSys.getSelectedValue()
         val dia = binding.vpvDia.getSelectedValue()
@@ -57,15 +59,15 @@ class PressureDetailPresenter {
         )
 
         if (isEdit) {
-            AllUtils.updatePressure(newBean)
+            newBean.updatePressure()
         } else {
-            AllUtils.savePressure(newBean)
+            newBean.savePressure()
         }
 
         activity.finish()
     }
 
-     fun updateStateUI(state: Int,binding: ActivityPDBinding) {
+     fun updateStateUI(state: Int,binding: ActivityPpprrBinding) {
         binding.tvDetailState.text = getBloodPressureState(state)
         binding.tvDetailState.setTextColor(getBloodPressureStateColor(state))
         binding.imgCc.setImageResource(getBloodPressureStateImage(state))
@@ -79,7 +81,7 @@ class PressureDetailPresenter {
         }
     }
 
-     fun updateUIWithBean(bean: PDataBean,binding: ActivityPDBinding) {
+     fun updateUIWithBean(bean: PDataBean,binding: ActivityPpprrBinding) {
         binding.vpvSys.setDefaultValue(bean.systolic)
         binding.vpvDia.setDefaultValue(bean.diatonic)
         binding.vpvPulse.setDefaultValue(bean.pultonic)
@@ -89,7 +91,7 @@ class PressureDetailPresenter {
         updateStateUI(binding.colorState ?: 2,binding)
     }
 
-     fun updateUIForNewEntry(binding: ActivityPDBinding) {
+     fun updateUIForNewEntry(binding: ActivityPpprrBinding) {
         binding.tvDetailDate.text = getDateTime(System.currentTimeMillis().toString())
         binding.atvDate.text =
             "Datetime:${getDateTime(System.currentTimeMillis().toString())}"
